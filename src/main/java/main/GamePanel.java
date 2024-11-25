@@ -9,6 +9,8 @@ import java.awt.*;
 public class GamePanel extends JPanel {
     private MouseInputs mouseInputs;
     private int xDelta = 100, yDelta = 100;
+    private int frames = 0;
+    private long lastCheck = 0;
 
     public GamePanel() {
 
@@ -37,5 +39,14 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
 
         g.fillRect(xDelta, yDelta, 200, 50);
+
+        frames++;
+        if (System.currentTimeMillis() - lastCheck >= 1000) {
+            lastCheck = System.currentTimeMillis();
+            System.out.println("FPS: " + frames);
+            frames = 0;
+        }
+
+        repaint();
     }
 }
