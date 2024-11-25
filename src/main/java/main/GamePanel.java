@@ -10,7 +10,7 @@ import java.util.Random;
 public class GamePanel extends JPanel {
     private MouseInputs mouseInputs;
     private float xDelta = 100, yDelta = 100;
-    private float xDir = 0.003f, yDir = 0.003f;
+    private float xDir = 1f, yDir = 1f;
     private int frames = 0;
     private long lastCheck = 0;
     private Color color = new Color(5,79,119);
@@ -52,7 +52,6 @@ public class GamePanel extends JPanel {
             System.out.println("FPS: " + frames);
             frames = 0;
         }
-        repaint();
     }
     private void updateRectangle() {
         xDelta+= xDir;
