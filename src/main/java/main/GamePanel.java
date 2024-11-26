@@ -14,7 +14,7 @@ import java.io.InputStream;
 public class GamePanel extends JPanel {
     private MouseInputs mouseInputs;
     private float xDelta = 100, yDelta = 100;
-    private BufferedImage img;
+    private BufferedImage img, subImg;
 
     public GamePanel() {
         mouseInputs = new MouseInputs(this);
@@ -38,8 +38,7 @@ public class GamePanel extends JPanel {
     }
     private void setPanelSize() {
         Dimension size = new Dimension(1280,800);
-        setMinimumSize(size);
-        setMaximumSize(size);
+        setPreferredSize(size);
     }
 
     public void changeXDelta(int value) {
@@ -57,7 +56,9 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.drawImage(img.getSubimage(0, 0, 64, 40), 0, 0, null);
+
+        subImg = img.getSubimage(1*64, 8*40, 64, 40);
+        g.drawImage(subImg, 0, 0,128, 80, null);
     }
 
 }
